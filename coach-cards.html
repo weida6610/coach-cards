@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+    background: #2c486f;
+    color: #f0f0f0;
+    padding: 40px 20px;
+  }
+
+  .page-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  .page-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 48px;
+    letter-spacing: 1px;
+  }
+
+  .coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .coach-card {
+    background: #1e3554;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #3a5a82;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .coach-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  .coach-header {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid #3a5a82;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .coach-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffd96b;
+    line-height: 1;
+    opacity: 0.25;
+    position: absolute;
+    right: 20px;
+    top: 16px;
+  }
+  .coach-header { position: relative; }
+  .coach-name-zh {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .coach-name-en {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ffd96b;
+    margin-top: 2px;
+    letter-spacing: 1px;
+  }
+
+  .coach-body { padding: 20px 24px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffd96b;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  .specialty-list {
+    list-style: none;
+    font-size: 13px;
+    color: #e0e0e0;
+    line-height: 1.8;
+  }
+  .specialty-list li::before {
+    content: "•";
+    color: #ffd96b;
+    margin-right: 8px;
+    font-weight: 700;
+  }
+
+  .cert-list {
+    list-style: none;
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.8;
+  }
+  .cert-list li::before {
+    content: "›";
+    color: #ffd96b;
+    margin-right: 8px;
+    font-weight: 700;
+  }
+
+  .competition {
+    font-size: 13px;
+    color: #cd7f32;
+    line-height: 1.8;
+  }
+  .competition::before {
+    content: "🥉";
+    margin-right: 6px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .stat-box {
+    flex: 1;
+    background: #1a3050;
+    border-radius: 8px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+  .stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .stat-unit {
+    font-size: 11px;
+    color: #888;
+    margin-left: 1px;
+  }
+
+  .coach-footer {
+    padding: 16px 24px 24px;
+  }
+  .book-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #ffd96b;
+    color: #1a1a1a;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: background 0.2s;
+  }
+  .book-btn:hover {
+    background: #ffe599;
+  }
+
+  @media (max-width: 420px) {
+    .coaches-grid {
+      grid-template-columns: 1fr;
+    }
+    .page-title { font-size: 22px; }
+    .coach-name-zh { font-size: 20px; }
+    .stat-value { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-title">專 業 教 練</div>
+<div class="page-subtitle">PROFESSIONAL COACHES</div>
+
+<div class="coaches-grid">
+
+  <!-- 1. Victor -->
+  <div class="coach-card">
+    <div class="coach-header">
+      <div>
+        <div class="coach-name-zh">陳為達</div>
+        <div class="coach-name-en">Victor</div>
+      </div>
+      <div class="coach-number">01</div>
+    </div>
+    <div class="coach-body">
+      <div class="section-label">專業項目</div>
+      <ul class="specialty-list">
+        <li>神經動能檢測</li>
+        <li>專項舉重訓練</li>
+        <li>失能關節動作控制與矯正</li>
+        <li>軟組織損傷之後期照護與運動矯正</li>
+      </ul>
+      <div class="section-label">證照執照</div>
+      <ul class="cert-list">
+        <li>台灣運動傷害防護學會─運動防護員(AT)</li>
+        <li>IHFI─PFT(私人教練)</li>
+        <li>IHFI─BET(護脊運動教練)</li>
+        <li>NKT神經動能療法 Lv.2</li>
+      </ul>
+      <div class="section-label">運動能力指標</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">抱槓蹲舉</div>
+          <div class="stat-value">150<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">臥舉</div>
+          <div class="stat-value">125<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">硬舉</div>
+          <div class="stat-value">220<span class="stat-unit">KG</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="coach-footer">
+      <a class="book-btn" href="https://weida6610.github.io/rbtc-schedule?coach=Victor" target="_blank">預約 Victor 教練</a>
+    </div>
+  </div>
+
+  <!-- 2. Apo -->
+  <div class="coach-card">
+    <div class="coach-header">
+      <div>
+        <div class="coach-name-zh">吳宜鴻</div>
+        <div class="coach-name-en">Apo</div>
+      </div>
+      <div class="coach-number">02</div>
+    </div>
+    <div class="coach-body">
+      <div class="section-label">專業項目</div>
+      <ul class="specialty-list">
+        <li>神經動能檢測</li>
+        <li>膳食營養評估與建議(減重/減脂)</li>
+        <li>關節/脊椎排列與矯正運動</li>
+        <li>運動按摩</li>
+      </ul>
+      <div class="section-label">證照執照</div>
+      <ul class="cert-list">
+        <li>怪獸訓練─C級肌力與體能教練</li>
+        <li>狂牛體能教練系統</li>
+      </ul>
+      <div class="section-label">運動能力指標</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">蹲舉</div>
+          <div class="stat-value">165<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">臥舉</div>
+          <div class="stat-value">100<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">硬舉</div>
+          <div class="stat-value">200<span class="stat-unit">KG</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="coach-footer">
+      <a class="book-btn" href="https://weida6610.github.io/rbtc-schedule?coach=Apo" target="_blank">預約 Apo 教練</a>
+    </div>
+  </div>
+
+  <!-- 3. Morgan -->
+  <div class="coach-card">
+    <div class="coach-header">
+      <div>
+        <div class="coach-name-zh">許晉華</div>
+        <div class="coach-name-en">Morgan</div>
+      </div>
+      <div class="coach-number">03</div>
+    </div>
+    <div class="coach-body">
+      <div class="section-label">專業項目</div>
+      <ul class="specialty-list">
+        <li>神經動能檢測</li>
+        <li>專項健力訓練</li>
+        <li>功能性訓練(日常生活動作提升與改善)</li>
+        <li>螺旋肌力與地雷管訓練</li>
+        <li>運動按摩</li>
+      </ul>
+      <div class="section-label">證照執照</div>
+      <ul class="cert-list">
+        <li>螺旋肌力體能訓練專家</li>
+        <li>TSMA─BAK(解剖肌肉動力學)</li>
+        <li>狂牛體能教練系統</li>
+      </ul>
+      <div class="section-label">比賽經歷</div>
+      <div class="competition">新極真空手道靜岡縣大賽第四名</div>
+      <div class="section-label">運動能力指標</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">蹲舉</div>
+          <div class="stat-value">150<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">臥舉</div>
+          <div class="stat-value">100<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">硬舉</div>
+          <div class="stat-value">200<span class="stat-unit">KG</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="coach-footer">
+      <a class="book-btn" href="https://weida6610.github.io/rbtc-schedule?coach=Morgan" target="_blank">預約 Morgan 教練</a>
+    </div>
+  </div>
+
+  <!-- 4. Adam -->
+  <div class="coach-card">
+    <div class="coach-header">
+      <div>
+        <div class="coach-name-zh">楊奇</div>
+        <div class="coach-name-en">Adam</div>
+      </div>
+      <div class="coach-number">04</div>
+    </div>
+    <div class="coach-body">
+      <div class="section-label">專業項目</div>
+      <ul class="specialty-list">
+        <li>動作效益訓練</li>
+        <li>肌力與體能訓練</li>
+        <li>壺鈴訓練</li>
+        <li>懸吊訓練</li>
+      </ul>
+      <div class="section-label">證照執照</div>
+      <ul class="cert-list">
+        <li>IHFI─PFT(私人教練)</li>
+        <li>AFAA─WT(器材訓練指導)</li>
+        <li>TRX─STC(懸吊訓練教練)</li>
+        <li>CFSC─功能性訓練教練認證</li>
+        <li>CrossFit Trainer Lv.1 指導員</li>
+      </ul>
+      <div class="section-label">運動能力指標</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">蹲舉</div>
+          <div class="stat-value">200<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">臥舉</div>
+          <div class="stat-value">120<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">硬舉</div>
+          <div class="stat-value">220<span class="stat-unit">KG</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="coach-footer">
+      <a class="book-btn" href="https://weida6610.github.io/rbtc-schedule?coach=Adam" target="_blank">預約 Adam 教練</a>
+    </div>
+  </div>
+
+  <!-- 5. Rick -->
+  <div class="coach-card">
+    <div class="coach-header">
+      <div>
+        <div class="coach-name-zh">許為竣</div>
+        <div class="coach-name-en">Rick</div>
+      </div>
+      <div class="coach-number">05</div>
+    </div>
+    <div class="coach-body">
+      <div class="section-label">專業項目</div>
+      <ul class="specialty-list">
+        <li>泰拳格鬥</li>
+        <li>拳擊格鬥</li>
+        <li>格鬥專項體能訓練</li>
+        <li>極限燃脂間歇訓練</li>
+        <li>高效身體線條重塑</li>
+      </ul>
+      <div class="section-label">證照執照</div>
+      <ul class="cert-list">
+        <li>狂牛體能教練系統</li>
+      </ul>
+      <div class="section-label">運動能力指標</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">抱槓蹲舉</div>
+          <div class="stat-value">110<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">臥舉</div>
+          <div class="stat-value">105<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">硬舉</div>
+          <div class="stat-value">160<span class="stat-unit">KG</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="coach-footer">
+      <a class="book-btn" href="https://weida6610.github.io/rbtc-schedule?coach=Rick" target="_blank">預約 Rick 教練</a>
+    </div>
+  </div>
+
+  <!-- 6. Verna -->
+  <div class="coach-card">
+    <div class="coach-header">
+      <div>
+        <div class="coach-name-zh">蔡語瑄</div>
+        <div class="coach-name-en">Verna</div>
+      </div>
+      <div class="coach-number">06</div>
+    </div>
+    <div class="coach-body">
+      <div class="section-label">專業項目</div>
+      <ul class="specialty-list">
+        <li>神經動能檢測</li>
+        <li>入門基礎肌力建構</li>
+        <li>女性專屬體態雕塑</li>
+        <li>臀部肌群動作優化</li>
+        <li>產後雕塑與恢復訓練</li>
+      </ul>
+      <div class="section-label">證照執照</div>
+      <ul class="cert-list">
+        <li>狂牛體能教練系統</li>
+        <li>ACE─CPT</li>
+      </ul>
+      <div class="section-label">運動能力指標</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">蹲舉</div>
+          <div class="stat-value">90<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">臥舉</div>
+          <div class="stat-value">50<span class="stat-unit">KG</span></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">硬舉</div>
+          <div class="stat-value">100<span class="stat-unit">KG</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="coach-footer">
+      <a class="book-btn" href="https://weida6610.github.io/rbtc-schedule?coach=Verna" target="_blank">預約 Verna 教練</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
