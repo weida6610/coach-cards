@@ -19,7 +19,7 @@
     --muted:#6b6b6b;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{background:var(--bg);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+  html,body{background:var(--bg);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;overflow:hidden}
   body{padding:32px 16px}
 
   .page-head{text-align:center;margin-bottom:36px}
@@ -28,9 +28,9 @@
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(440px,1fr));
+    grid-template-columns:1fr;
     gap:28px;
-    max-width:1320px;
+    max-width:700px;
     margin:0 auto;
   }
 
@@ -245,6 +245,21 @@ COACHES.forEach(c => {
     </article>
   `);
 });
+
+/* Notify Wix parent of actual content height */
+function notifyHeight(){
+  const h = document.documentElement.scrollHeight;
+  window.parent.postMessage({type:'setHeight', height:h}, '*');
+}
+window.addEventListener('load', notifyHeight);
+window.addEventListener('resize', notifyHeight);
+/* Re-send after background images finish loading */
+document.querySelectorAll('.photo').forEach(el => {
+  const src = el.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g,'');
+  if(src){ const img=new Image(); img.onload=notifyHeight; img.src=src; }
+});
+/* Safety: re-send after 1s in case of late rendering */
+setTimeout(notifyHeight, 1000);
 </script>
 </body>
 </html>
