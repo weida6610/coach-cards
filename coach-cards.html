@@ -260,13 +260,6 @@ document.querySelectorAll('.photo').forEach(el => {
 });
 /* Safety: re-send after 1s in case of late rendering */
 setTimeout(notifyHeight, 1000);
-/* Temporary: show actual page height for Wix iframe sizing */
-setTimeout(function(){
-  var d=document.createElement('div');
-  d.style.cssText='position:fixed;bottom:8px;right:8px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:14px;z-index:9999;opacity:0.8';
-  d.textContent='頁面高度: '+document.documentElement.scrollHeight+'px';
-  document.body.appendChild(d);
-}, 1500);
 </script>
 </body>
 </html>
